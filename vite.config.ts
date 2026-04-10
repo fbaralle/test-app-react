@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
   build: {
     sourcemap: true,
-    minify: 'terser',
+    minify: 'esbuild',
   },
   server: {
     port: 3000,
