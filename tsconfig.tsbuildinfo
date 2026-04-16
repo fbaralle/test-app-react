@@ -1,1 +1,1 @@
-{"root":["./src/app.tsx","./src/main.tsx","./src/vite-env.d.ts","./src/components/cryptodashboard.tsx","./src/components/queryprovider.tsx"],"version":"5.8.3"}
+{"root":["./src/app.tsx","./src/main.tsx","./src/vite-env.d.ts","./src/components/cryptodashboard.tsx","./src/components/healthchecktoolbar.tsx","./src/components/queryprovider.tsx","./worker/index.ts","./worker/routes/cache.ts","./worker/routes/export.ts","./worker/routes/favorites.ts","./worker/routes/healthcheck.ts"],"version":"5.8.3"}

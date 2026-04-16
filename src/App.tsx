@@ -1,10 +1,11 @@
 import QueryProvider from "./components/QueryProvider";
 import CryptoDashboard from "./components/CryptoDashboard";
+import HealthcheckToolbar from "./components/HealthcheckToolbar";
 
 export default function App() {
   return (
     <QueryProvider>
-      <div className="flex flex-col min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800">
+      <div className="flex flex-col min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 pb-12">
         <header className="pt-10 pb-6 text-center">
           <p className="text-xs font-medium uppercase tracking-widest text-indigo-600 dark:text-indigo-400 mb-2">
             Webflow Cloud Test App
@@ -25,6 +26,7 @@ export default function App() {
             <p>React + Vite + React Query + Tailwind CSS</p>
           </div>
         </footer>
+        <HealthcheckToolbar />
       </div>
     </QueryProvider>
   );

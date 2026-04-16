@@ -5,8 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:cf": "vite build && wrangler dev",
     "build": "tsc -b && vite build",
-    "preview": "vite preview"
+    "preview": "vite build && wrangler dev",
+    "db:setup": "wrangler d1 migrations apply DB --local",
+    "cf:types": "wrangler types"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.95.2",
@@ -14,6 +17,7 @@
     "react-dom": "^19.1.0"
   },
   "devDependencies": {
+    "@cloudflare/workers-types": "^4.20260416.2",
     "@types/react": "^19.1.6",
     "@types/react-dom": "^19.1.5",
     "@vitejs/plugin-react": "^4.5.0",
@@ -21,6 +25,7 @@
     "postcss": "^8.5.4",
     "tailwindcss": "^3.4.17",
     "typescript": "~5.8.3",
-    "vite": "^6.3.5"
+    "vite": "^6.3.5",
+    "wrangler": "^4.83.0"
   }
 }
