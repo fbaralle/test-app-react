@@ -1,5 +1,6 @@
 import QueryProvider from "./components/QueryProvider";
 import CryptoDashboard from "./components/CryptoDashboard";
+import FavoritesSection from "./components/FavoritesSection";
 import HealthcheckToolbar from "./components/HealthcheckToolbar";
 
 export default function App() {
@@ -18,6 +19,7 @@ export default function App() {
           </p>
         </header>
         <main className="flex-1 px-4 pb-12">
+          <FavoritesSection />
           <CryptoDashboard />
         </main>
         <footer className="border-t border-gray-200 dark:border-gray-700 bg-white/60 dark:bg-gray-900/60 backdrop-blur">
