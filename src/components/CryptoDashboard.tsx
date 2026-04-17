@@ -221,6 +221,7 @@ export default function CryptoDashboard() {
     queryKey: ["coins", currency],
     queryFn: () => fetchCoins(currency),
     refetchInterval: autoRefresh ? refreshInterval * 1000 : false,
+    retry: false,
   });
 
   // Favorites hooks

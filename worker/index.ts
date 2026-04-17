@@ -4,6 +4,8 @@ import { handleHealthcheck } from "./routes/healthcheck";
 import { handleFavorites } from "./routes/favorites";
 import { handleCache } from "./routes/cache";
 import { handleExport } from "./routes/export";
+import { handleFlags } from "./routes/flags";
+import { handlePageViews } from "./routes/pageviews";
 
 export interface Env {
   DB: D1Database;
@@ -31,6 +33,12 @@ export default {
       }
       if (path === "/api/export") {
         return handleExport(request, env);
+      }
+      if (path === "/api/flags") {
+        return handleFlags(request, env);
+      }
+      if (path === "/api/pageviews") {
+        return handlePageViews(request, env);
       }
       return new Response(JSON.stringify({ error: "Not found" }), {
         status: 404,
