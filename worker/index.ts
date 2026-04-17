@@ -6,6 +6,7 @@ import { handleCache } from "./routes/cache";
 import { handleExport } from "./routes/export";
 import { handleFlags } from "./routes/flags";
 import { handlePageViews } from "./routes/pageviews";
+import { handleEnvDebug } from "./routes/env-debug";
 
 export interface Env {
   DB: D1Database;
@@ -39,6 +40,9 @@ export default {
       }
       if (path === "/api/pageviews") {
         return handlePageViews(request, env);
+      }
+      if (path === "/api/env-debug") {
+        return handleEnvDebug(request, env);
       }
       return new Response(JSON.stringify({ error: "Not found" }), {
         status: 404,
