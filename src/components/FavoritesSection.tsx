@@ -21,7 +21,7 @@ interface AddFavoriteParams {
   coin_image?: string;
 }
 
-const basePath = import.meta.env.PUBLIC_API_MOUNT_PATH || "";
+const basePath = import.meta.env.APP_PUBLIC_API_PATH || "";
 
 async function fetchFavorites(): Promise<Favorite[]> {
     const res = await fetch(`${basePath}/api/favorites`);
