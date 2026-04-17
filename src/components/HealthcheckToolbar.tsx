@@ -211,7 +211,7 @@ function ServiceCard({
   );
 }
 
-const basePath = import.meta.env.APP_PUBLIC_API_PATH || "";
+const basePath = (import.meta.env.BASE_URL || "").replace(/\/$/, "");
 
 export default function HealthcheckToolbar() {
   const [health, setHealth] = useState<HealthcheckResponse | null>(null);
