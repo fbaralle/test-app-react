@@ -1,6 +1,6 @@
 /// <reference types="@cloudflare/workers-types" />
 
-import { handleHealthcheck } from "./routes/healthcheck";
+import { handleBindingStatus } from "./routes/binding-status";
 import { handleFavorites } from "./routes/favorites";
 import { handleCache } from "./routes/cache";
 import { handleExport } from "./routes/export";
@@ -22,8 +22,8 @@ export default {
 
     // API routes
     if (path.startsWith("/api/")) {
-      if (path === "/api/healthcheck") {
-        return handleHealthcheck(request, env);
+      if (path === "/api/binding-status") {
+        return handleBindingStatus(request, env);
       }
       if (path === "/api/favorites") {
         return handleFavorites(request, env);

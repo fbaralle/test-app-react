@@ -59,7 +59,7 @@ async function checkR2(r2: R2Bucket): Promise<ServiceStatus> {
   }
 }
 
-export async function handleHealthcheck(_request: Request, env: Env): Promise<Response> {
+export async function handleBindingStatus(_request: Request, env: Env): Promise<Response> {
   const [d1, kv_sessions, kv_flags, r2] = await Promise.all([
     checkD1(env.DB),
     checkKV(env.SESSIONS),
