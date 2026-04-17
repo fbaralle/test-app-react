@@ -211,7 +211,7 @@ function ServiceCard({
   );
 }
 
-const basePath = import.meta.env.VITE_API_MOUNT_PATH || "";
+const basePath = import.meta.env.PUBLIC_API_MOUNT_PATH || "";
 
 export default function HealthcheckToolbar() {
   const [health, setHealth] = useState<HealthcheckResponse | null>(null);

@@ -12,4 +12,7 @@ export default defineConfig({
   server: {
     port: 3000,
   },
+  define: {
+    'import.meta.env.PUBLIC_API_MOUNT_PATH': JSON.stringify(process.env.PUBLIC_API_MOUNT_PATH || '')
+  }
 });

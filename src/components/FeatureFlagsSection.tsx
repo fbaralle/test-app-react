@@ -17,7 +17,7 @@ const FLAG_LABELS: Record<string, { label: string; description: string }> = {
   experimental_features: { label: "Experimental", description: "Enable experimental features" },
 };
 
-const basePath = import.meta.env.VITE_API_MOUNT_PATH || "";
+const basePath = import.meta.env.PUBLIC_API_MOUNT_PATH || "";
 
 async function fetchFlags(): Promise<FeatureFlags> {
     const res = await fetch(`${basePath}/api/flags`);

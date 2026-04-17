@@ -18,7 +18,7 @@ interface ExportResult {
   url: string;
 }
 
-const basePath = import.meta.env.VITE_API_MOUNT_PATH || "";
+const basePath = import.meta.env.PUBLIC_API_MOUNT_PATH || "";
 
 async function fetchExports(): Promise<Export[]> {
     const res = await fetch(`${basePath}/api/export`);

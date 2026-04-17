@@ -29,7 +29,7 @@ function setVisitorId(id: string): void {
   localStorage.setItem(VISITOR_ID_KEY, id);
 }
 
-const basePath = import.meta.env.VITE_API_MOUNT_PATH || "";
+const basePath = import.meta.env.PUBLIC_API_MOUNT_PATH || "";
 
 async function fetchPageViews(): Promise<PageViewsData> {
     const res = await fetch(`${basePath}/api/pageviews`);
