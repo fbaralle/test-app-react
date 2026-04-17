@@ -211,6 +211,8 @@ function ServiceCard({
   );
 }
 
+const basePath = import.meta.env.VITE_API_MOUNT_PATH || "";
+
 export default function HealthcheckToolbar() {
   const [health, setHealth] = useState<HealthcheckResponse | null>(null);
   const [loading, setLoading] = useState(true);
@@ -220,7 +222,7 @@ export default function HealthcheckToolbar() {
   useEffect(() => {
     async function fetchHealth() {
       try {
-        const res = await fetch("/api/healthcheck");
+        const res = await fetch(`${basePath}/api/healthcheck`);
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = (await res.json()) as HealthcheckResponse;
         setHealth(data);

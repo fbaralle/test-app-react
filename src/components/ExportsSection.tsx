@@ -18,11 +18,10 @@ interface ExportResult {
   url: string;
 }
 
-const getBasePath = () => import.meta.env.VITE_BASE_PATH || "";
+const basePath = import.meta.env.VITE_API_MOUNT_PATH || "";
 
 async function fetchExports(): Promise<Export[]> {
-  const basePath = getBasePath();
-  const res = await fetch(`${basePath}/api/export`);
+    const res = await fetch(`${basePath}/api/export`);
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   const data = (await res.json()) as ExportsResponse;
   if (data.error) throw new Error(data.error);
@@ -30,8 +29,7 @@ async function fetchExports(): Promise<Export[]> {
 }
 
 async function createExport(data: unknown): Promise<ExportResult> {
-  const basePath = getBasePath();
-  const res = await fetch(`${basePath}/api/export`, {
+    const res = await fetch(`${basePath}/api/export`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
@@ -182,7 +180,7 @@ export default function ExportsSection({ compact }: Props) {
                 </p>
               </div>
               <a
-                href={`${getBasePath()}/api/export?id=${exp.key.replace("exports/", "")}`}
+                href={`${basePath}/api/export?id=${exp.key.replace("exports/", "")}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="ml-3 px-2 py-1 text-xs font-medium text-indigo-600 dark:text-indigo-400 hover:underline"

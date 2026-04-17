@@ -21,11 +21,10 @@ interface AddFavoriteParams {
   coin_image?: string;
 }
 
-const getBasePath = () => import.meta.env.VITE_BASE_PATH || "";
+const basePath = import.meta.env.VITE_API_MOUNT_PATH || "";
 
 async function fetchFavorites(): Promise<Favorite[]> {
-  const basePath = getBasePath();
-  const res = await fetch(`${basePath}/api/favorites`);
+    const res = await fetch(`${basePath}/api/favorites`);
   if (!res.ok) {
     throw new Error(`Failed to fetch favorites: ${res.status}`);
   }
@@ -34,8 +33,7 @@ async function fetchFavorites(): Promise<Favorite[]> {
 }
 
 async function addFavorite(params: AddFavoriteParams): Promise<void> {
-  const basePath = getBasePath();
-  const res = await fetch(`${basePath}/api/favorites`, {
+    const res = await fetch(`${basePath}/api/favorites`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(params),
@@ -46,8 +44,7 @@ async function addFavorite(params: AddFavoriteParams): Promise<void> {
 }
 
 async function removeFavorite(coinId: string): Promise<void> {
-  const basePath = getBasePath();
-  const res = await fetch(`${basePath}/api/favorites?coin_id=${encodeURIComponent(coinId)}`, {
+    const res = await fetch(`${basePath}/api/favorites?coin_id=${encodeURIComponent(coinId)}`, {
     method: "DELETE",
   });
   if (!res.ok) {

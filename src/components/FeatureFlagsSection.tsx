@@ -17,11 +17,10 @@ const FLAG_LABELS: Record<string, { label: string; description: string }> = {
   experimental_features: { label: "Experimental", description: "Enable experimental features" },
 };
 
-const getBasePath = () => import.meta.env.VITE_BASE_PATH || "";
+const basePath = import.meta.env.VITE_API_MOUNT_PATH || "";
 
 async function fetchFlags(): Promise<FeatureFlags> {
-  const basePath = getBasePath();
-  const res = await fetch(`${basePath}/api/flags`);
+    const res = await fetch(`${basePath}/api/flags`);
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   const data = (await res.json()) as FlagsResponse;
   if (data.error) throw new Error(data.error);
@@ -29,8 +28,7 @@ async function fetchFlags(): Promise<FeatureFlags> {
 }
 
 async function toggleFlag(flag: string, value: boolean): Promise<void> {
-  const basePath = getBasePath();
-  const res = await fetch(`${basePath}/api/flags`, {
+    const res = await fetch(`${basePath}/api/flags`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ flag, value }),

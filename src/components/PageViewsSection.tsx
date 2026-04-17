@@ -29,11 +29,10 @@ function setVisitorId(id: string): void {
   localStorage.setItem(VISITOR_ID_KEY, id);
 }
 
-const getBasePath = () => import.meta.env.VITE_BASE_PATH || "";
+const basePath = import.meta.env.VITE_API_MOUNT_PATH || "";
 
 async function fetchPageViews(): Promise<PageViewsData> {
-  const basePath = getBasePath();
-  const res = await fetch(`${basePath}/api/pageviews`);
+    const res = await fetch(`${basePath}/api/pageviews`);
   if (!res.ok) throw new Error(`HTTP ${res.status}`);
   const data = (await res.json()) as PageViewsResponse;
   if (data.error) throw new Error(data.error);
@@ -41,8 +40,7 @@ async function fetchPageViews(): Promise<PageViewsData> {
 }
 
 async function trackPageView(visitorId: string | null): Promise<TrackResponse> {
-  const basePath = getBasePath();
-  const res = await fetch(`${basePath}/api/pageviews`, {
+    const res = await fetch(`${basePath}/api/pageviews`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ visitorId }),
