@@ -133,7 +133,6 @@ function Tooltip({
 }
 
 function ServiceCard({
-  serviceKey,
   config,
   status,
   loading,
