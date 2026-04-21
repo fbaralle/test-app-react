@@ -19,7 +19,12 @@ export interface Env {
 export default {
   async fetch(request: Request, env: Env, _ctx: ExecutionContext): Promise<Response> {
     const url = new URL(request.url);
-    const path = url.pathname;
+    // Webflow Cloud mounts the app at a path prefix (e.g. /vite-react-cf),
+    // so the pathname we see is /<prefix>/api/... rather than /api/...
+    // Match on the substring from /api/ onward so routing works regardless
+    // of where the app is mounted.
+    const apiIndex = url.pathname.indexOf("/api/");
+    const path = apiIndex !== -1 ? url.pathname.slice(apiIndex) : url.pathname;
 
     // API routes
     if (path.startsWith("/api/")) {
