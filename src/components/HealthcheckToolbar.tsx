@@ -137,7 +137,6 @@ function ServiceCard({
   status,
   loading,
 }: {
-  serviceKey: ServiceName;
   config: ServiceConfig;
   status?: ServiceStatus;
   loading: boolean;
@@ -309,7 +308,6 @@ export default function HealthcheckToolbar() {
             {(Object.keys(SERVICE_CONFIG) as ServiceName[]).map((key) => (
               <ServiceCard
                 key={key}
-                serviceKey={key}
                 config={SERVICE_CONFIG[key]}
                 status={health?.services[key]}
                 loading={loading}
